@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="pa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ਡਿਜ਼ਿਟਲ ਕਦਮ - Daily Tech Updates</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gurmukhi:wght@400;500;600;700;800;900&family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: 1080px 1920px;
+            margin: 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Fredoka', 'Baloo 2', 'Noto Sans Gurmukhi', sans-serif;
+            background: white;
+            width: 1080px;
+            height: 1920px;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .poster-container {
+            width: 1080px;
+            height: 1920px;
+            background: linear-gradient(180deg, #fff9e6 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Tech Icons Background */
+        .tech-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://sfile.chatglm.cn/images-ppt/40f8e302c660.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+            padding: 18px 35px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .header-top-logo {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            height: 110px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+            z-index: 3;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 62px;
+        }
+        
+        .channel-logo {
+            width: 155px;
+            height: 125px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+        }
+        
+        .header-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+        
+        .channel-name {
+            font-size: 56px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+            letter-spacing: 1.5px;
+            line-height: 1.1;
+        }
+        
+        .date-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(125, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 7px 18px;
+            border-radius: 25px;
+            color: yellow;
+            font-size: 22px;
+            font-weight: 800;
+            gap: 7px;
+        }
+        
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+        
+        .featured-image {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 56px;
+            border: 2px solid orangered;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: none;
+        }
+        
+        .instructor-name {
+            padding: 7px 18px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+            color: brown;
+            font-size: 17px;
+            font-weight: 800;
+            text-align: center;
+             line-height: 1.2;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 15px 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            min-height: 0;
+        }
+        
+        /* Section Cards */
+        .section-card {
+            background: white;
+            border-radius: 16px;
+            padding: 14px 18px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            opacity: 0.04;
+            background: currentColor;
+            border-radius: 0 0 0 100%;
+        }
+        
+        .section-content-wrapper {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+        }
+        
+        .section-left {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .section-right-image {
+            width: 180px;
+            min-height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .section-right-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .section-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .section-title {
+            font-size: 30px;
+            font-weight: 900;
+            color: brown;
+            
+            line-height: 1.2;
+        }
+        
+        /* Digital Thought */
+        .thought-card {
+            border-left-color: #fbbf24;
+            background: linear-gradient(135deg, #fffbeb, #ffffff);
+        }
+        
+        .thought-card .section-icon {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
+        
+        .thought-text {
+            font-style: italic;
+            font-size: 26px;
+            color: #111827;
+            padding-left: 16px;
+            border-left: 4px solid #fbbf24;
+            margin-top: 10px;
+            font-weight: 800;
+            line-height: 1.35;
+        }
+        
+        /* Tech News */
+        .news-card {
+            border-left-color: #ef4444;
+            background: linear-gradient(135deg, #fef2f2, #ffffff);
+        }
+        
+        .news-card .section-icon {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+        
+        .news-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 2px solid #f3f4f6;
+            line-height: 1.3;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .news-bullet {
+            width: 10px;
+            height: 10px;
+            background: #ef4444;
+            border-radius: 50%;
+            margin-top: 12px;
+            flex-shrink: 0;
+        }
+        
+        .news-text {
+            flex: 1;
+            font-size: 24px;
+            line-height: 1.35;
+            font-weight: 800;
+            color: #1f2937;
+        }
+        
+        /* Daily Digital Knowledge */
+        .knowledge-card {
+            border-left-color: #06b6d4;
+            background: linear-gradient(135deg, #ecfeff, #ffffff);
+        }
+        
+        .knowledge-card .section-icon {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+        }
+        
+        .knowledge-text {
+            background: linear-gradient(135deg, #f0fdfa, #cffafe);
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-top: 10px;
+            font-size: 24px;
+            line-height: 1.4;
+            font-weight: 800;
+            color: #111827;
+        }
+        
+        /* MCQ Section */
+        .mcq-card {
+            border-left-color: #f97316;
+            background: linear-gradient(135deg, #fff7ed, #ffffff);
+        }
+        
+        .mcq-card .section-icon {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+        }
+        
+        .mcq-content {
+            margin-top: 10px;
+        }
+        
+        .mcq-question {
+            font-size: 26px;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .mcq-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 14px;
+            margin: 10px 0;
+        }
+        
+        .mcq-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 7px;
+            font-size: 22px;
+            font-weight: 800;
+            color: #374151;
+            line-height: 1.3;
+        }
+        
+        .mcq-option-letter {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 900;
+            flex-shrink: 0;
+            border: 2px solid #d1d5db;
+        }
+        
+        .mcq-answer {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            padding: 10px 14px;
+            border-radius: 12px;
+            margin-top: 10px;
+            border: 3px solid #10b981;
+        }
+        
+        .mcq-answer-label {
+            font-size: 22px;
+            color: #047857;
+            font-weight: 900;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+        
+        .mcq-answer-text {
+            font-size: 24px;
+            font-weight: 800;
+            color: #111827;
+            line-height: 1.3;
+        }
+        
+        .mcq-explanation {
+            background: #fef3c7;
+            padding: 10px 14px;
+            border-radius: 12px;
+            margin-top: 8px;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .mcq-explanation-label {
+            font-size: 22px;
+            color: #b45309;
+            font-weight: 900;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+        
+        .mcq-explanation-text {
+            font-size: 22px;
+            font-weight: 800;
+            color: #1f2937;
+            line-height: 1.35;
+        }
+        
+        /* Riddle */
+        .riddle-card {
+            border-left-color: #8b5cf6;
+            background: linear-gradient(135deg, #f5f3ff, #ffffff);
+        }
+        
+        .riddle-card .section-icon {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+        
+        .riddle-content {
+            background: linear-gradient(135deg, #faf5ff, #ede9fe);
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+        
+        .riddle-question {
+            font-size: 24px;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        
+        .previous-answer {
+            background: white;
+            padding: 10px 14px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        .answer-label {
+            font-size: 20px;
+            color: #6b7280;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        
+        .answer-text {
+            font-size: 22px;
+            color: #10b981;
+            margin-top: 4px;
+            font-weight: 900;
+            line-height: 1.3;
+        }
+        
+        /* Subscribe Section */
+        .subscribe-section {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            padding: 16px 25px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+        
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            text-decoration: none;
+            padding: 11px 26px;
+            border-radius: 48px;
+            font-size: 24px;
+            font-weight: 900;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .whatsapp-btn {
+            color: #25d366;
+        }
+        
+        .youtube-btn {
+            color: #ff0000;
+        }
+        
+        .instagram-btn {
+            color: #e4405f;
+        }
+        
+        .social-btn img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+        }
+        
+        .social-icon {
+            font-size: 28px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+            padding: 14px 25px;
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+        
+        .footer-text {
+            font-size: 22px;
+            opacity: 0.95;
+            margin-bottom: 5px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        
+        .footer-phone {
+            font-size: 26px;
+            font-weight: 900;
+            color: white;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        @media print {
+            body {
+                width: 1080px;
+                height: 1920px;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .poster-container {
+                width: 1080px;
+                height: 1920px;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster-container">
+        <!-- Tech Icons Background -->
+        <div class="tech-bg"></div>
+        
+        <!-- Header -->
+        <div class="header">
+            <img src="https://z-cdn-media.chatglm.cn/files/6e11fab9-5748-4fa8-8c0f-ea89713ede74.png?auth_key=1872244706-e69294d7962646adb49da11373bc8bf7-0-41add79bbff325beb7693b0634cfba41" alt="Digital Footprint" class="header-top-logo">
+            <div class="header-content">
+                <img src="https://z-cdn-media.chatglm.cn/files/bcceac8c-94f4-4a75-9b5e-2f0819c388ab.jpg?auth_key=1872204343-2a484731653043e68b8cf7f43d9992b8-0-af7dff0b7af41c040bfd480a74cf55d4" alt="CSW Logo" class="channel-logo">
+                <div class="header-center">
+                    <div class="channel-name">ਡਿਜ਼ਿਟਲ ਕਦਮ</div>
+                    <div class="date-badge">
+                        <i class="material-icons" style="font-size: 22px;">event</i>
+                        27/02/2026
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="featured-image">
+                        <img src="https://z-cdn-media.chatglm.cn/files/8ad1abd4-7f1a-4eba-a576-ac58f7e5d6b9.png?auth_key=1872199889-e7a48f5f2d724e1895da240e6324604a-0-44fb2435b526b38e6f04a0da62477175" alt="Instructor">
+                    </div>
+                    <div class="instructor-name">ਵਿਪਨ ਸੈਣੀ<br>( ਕੰਪਿਊਟਰ ਫੈਕਲਟੀ )</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Digital Thought -->
+            <div class="section-card thought-card">
+                <div class="section-left">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="material-icons">lightbulb</i>
+                        </div>
+                        <div class="section-title">ਡਿਜ਼ਿਟਲ ਸੋਚ | Digital Thought</div>
+                    </div>
+                    <div class="thought-text">
+                        "ਬਾਈਨਰੀ ਕੋਡ ਸਿਰਫ਼ 0 ਅਤੇ 1 ਦਾ ਖੇਲ ਹੈ, ਪਰ ਇਹ ਪੂਰੀ ਦੁਨੀਆਂ ਦੀ ਭਾਸ਼ਾ ਹੈ।"<br>
+                        Binary code uses only 0 and 1, but it's the language of the entire world.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Digital News -->
+            <div class="section-card news-card">
+                <div class="section-left">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="material-icons">article</i>
+                        </div>
+                        <div class="section-title">ਡਿਜ਼ਿਟਲ ਖ਼ਬਰਾਂ | Digital News</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-bullet"></div>
+                        <div class="news-text">AI ਅਤੇ Machine Learning ਵਿੱਚ ਨਵੀਆਂ ਤਰੱਕੀਆਂ ਨੇ ਸਾਫਟਵੇਅਰ ਡਿਵੈਲਪਮੈਂਟ ਨੂੰ ਬਦਲ ਦਿੱਤਾ ਹੈ</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-bullet"></div>
+                        <div class="news-text">Python 3.14 ਵਿੱਚ ਨਵੇਂ features ਅਤੇ performance improvements</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-bullet"></div>
+                        <div class="news-text">Quantum Computing ਦਾ ਭਵਿੱਖੀ ਟੈਕਨਾਲੋਜੀ 'ਤੇ ਪ੍ਰਭਾਵ</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-bullet"></div>
+                        <div class="news-text">Cyber Security ਵਿੱਚ ਨਵੇਂ threats ਅਤੇ protection methods</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Daily Digital Knowledge -->
+            <div class="section-card knowledge-card">
+                <div class="section-content-wrapper">
+                    <div class="section-left">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="material-icons">auto_awesome</i>
+                            </div>
+                            <div class="section-title"> ਡਿਜ਼ਿਟਲ ਗਿਆਨ । Digital Knowledge</div>
+                        </div>
+                        <div class="knowledge-text">
+                            ਪਹਿਲਾ computer bug ਅਸਲ ਵਿੱਚ ਇੱਕ ਕੀੜਾ ਸੀ! 1947 ਵਿੱਚ Grace Hopper ਨੇ ਇੱਕ moth ਨੂੰ computer ਵਿੱਚ ਫਸਿਆ ਪਾਇਆ ਸੀ।
+                        </div>
+                    </div>
+                    <div class="section-right-image">
+                        <img src="https://sfile.chatglm.cn/images-ppt/97e39aefa0c7.jpg" alt="Knowledge">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Digital MCQs -->
+            <div class="section-card mcq-card">
+                <div class="section-content-wrapper">
+                    <div class="section-left">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="material-icons">quiz</i>
+                            </div>
+                            <div class="section-title">ਡਿਜ਼ਿਟਲ MCQ । Digital MCQ</div>
+                        </div>
+                        <div class="mcq-content">
+                            <div class="mcq-question">
+                                CPU ਦਾ ਪੂਰਾ ਨਾਮ ਕੀ ਹੈ?
+                            </div>
+                            <div class="mcq-options">
+                                <div class="mcq-option">
+                                    <div class="mcq-option-letter">A</div>
+                                    <span>Central Processing Unit</span>
+                                </div>
+                                <div class="mcq-option">
+                                    <div class="mcq-option-letter">B</div>
+                                    <span>Computer Personal Unit</span>
+                                </div>
+                                <div class="mcq-option">
+                                    <div class="mcq-option-letter">C</div>
+                                    <span>Central Program Unit</span>
+                                </div>
+                                <div class="mcq-option">
+                                    <div class="mcq-option-letter">D</div>
+                                    <span>Core Processing Unit</span>
+                                </div>
+                            </div>
+                            <div class="mcq-answer">
+                                <div class="mcq-answer-label">ਸਹੀ ਜਵਾਬ:</div>
+                                <div class="mcq-answer-text">A - Central Processing Unit</div>
+                            </div>
+                            <div class="mcq-explanation">
+                                <div class="mcq-explanation-label">ਵਿਆਖਿਆ:</div>
+                                <div class="mcq-explanation-text">CPU (Central Processing Unit) ਕੰਪਿਊਟਰ ਦਾ ਦਿਮਾਗ ਹੈ। ਇਹ ਸਾਰੇ calculations ਅਤੇ instructions ਨੂੰ process ਕਰਦਾ ਹੈ ਅਤੇ computer ਦੀ speed control ਕਰਦਾ ਹੈ।</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-right-image">
+                        <img src="https://sfile.chatglm.cn/images-ppt/d5b4049f0227.png" alt="MCQ">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Digital Riddle -->
+            <div class="section-card riddle-card">
+                <div class="section-content-wrapper">
+                    <div class="section-left">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="material-icons">extension</i>
+                            </div>
+                            <div class="section-title">ਡਿਜ਼ਿਟਲ ਪਹੇਲੀ | Digital Riddle</div>
+                        </div>
+                        <div class="riddle-content">
+                            <div class="riddle-question">
+                                <font color="orangered">ਅੱਜ ਦੀ ਪਹੇਲੀ:</font><br>
+                                ਮੈਂ ਸਭ ਕੁਝ ਜਾਣਦਾ ਹਾਂ, ਪਰ ਕੁਝ ਨਹੀਂ ਸੋਚਦਾ। ਮੈਂ ਕੌਣ ਹਾਂ?
+                            </div>
+                            <div class="previous-answer">
+                                <div class="answer-label">26/02/2026 ਦੀ ਪਹੇਲੀ ਦਾ ਜਵਾਬ:</div>
+                                <div class="answer-text">first day</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-right-image">
+                        <img src="https://sfile.chatglm.cn/images-ppt/44da5c46ddaf.jpg" alt="Puzzle">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Social Media Buttons -->
+        <div class="subscribe-section">
+            <div class="social-buttons">
+                <a href="https://whatsapp.com/channel/0029VbCaWtV4dTnBdQviIx2p" target="_blank" class="social-btn whatsapp-btn">
+                    <img src="https://z-cdn-media.chatglm.cn/files/bcceac8c-94f4-4a75-9b5e-2f0819c388ab.jpg?auth_key=1872204343-2a484731653043e68b8cf7f43d9992b8-0-af7dff0b7af41c040bfd480a74cf55d4" alt="CSW">
+                    <span>WhatsApp</span>
+                    <i class="material-icons social-icon">chat</i>
+                </a>
+                <a href="https://www.youtube.com/@computersciencewala-pb" target="_blank" class="social-btn youtube-btn">
+                    <img src="https://z-cdn-media.chatglm.cn/files/bcceac8c-94f4-4a75-9b5e-2f0819c388ab.jpg?auth_key=1872204343-2a484731653043e68b8cf7f43d9992b8-0-af7dff0b7af41c040bfd480a74cf55d4" alt="CSW">
+                    <span>YouTube</span>
+                    <i class="material-icons social-icon">play_circle</i>
+                </a>
+                <a href="https://www.instagram.com/saini_vip?igsh=MTB5MXE0eDZxcmhybw==" target="_blank" class="social-btn instagram-btn">
+                    <img src="https://z-cdn-media.chatglm.cn/files/bcceac8c-94f4-4a75-9b5e-2f0819c388ab.jpg?auth_key=1872204343-2a484731653043e68b8cf7f43d9992b8-0-af7dff0b7af41c040bfd480a74cf55d4" alt="CSW">
+                    <span>Instagram</span>
+                    <i class="material-icons social-icon">camera_alt</i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-text">ਰੋਜ਼ਾਨਾ ਕੰਪਿਊਟਰ ਗਿਆਨ ਲਈ ਮੇਰੇ ਨਾਲ ਜੁੜੋ!</div>
+            <div class="footer-phone">+91-8284800816</div>
+        </div>
+    </div>
+</body>
+</html>
